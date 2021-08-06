@@ -9,3 +9,7 @@ tomcat: 7.5
 
 ## 数据库
 
+localhost:3306
+
+## 项目演示
+http://localhost:8080/index.html
