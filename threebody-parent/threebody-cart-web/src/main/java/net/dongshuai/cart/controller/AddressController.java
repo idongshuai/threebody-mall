@@ -25,7 +25,7 @@ public class AddressController {
 	private AddressService addressService;
 	
 	/**
-	 * 返回全部列表
+	 * 返回全部列表1
 	 * @return
 	 */
 	@RequestMapping("/findAll")
