@@ -28,6 +28,7 @@ public class ItemSearchController {
      */
     @RequestMapping("/search")
     public Map search(@RequestBody Map searchMap) {
+	System.out.println(JSON.toJSONString(searchMap));
         return itemSearchService.srearch(searchMap);
     }
 }

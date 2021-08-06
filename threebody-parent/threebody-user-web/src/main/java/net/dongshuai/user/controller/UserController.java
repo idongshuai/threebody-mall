@@ -50,7 +50,7 @@ public class UserController {
 	 */
 	@RequestMapping("/add")
 	public Result add(@RequestBody TbUser user, String smsCode){
-	    
+		System.out.println(smsCode);	    
 	    boolean checkSmsCode = userService.checkSmsCode(user.getPhone(), smsCode);
 	    
 	    if (!checkSmsCode) {
