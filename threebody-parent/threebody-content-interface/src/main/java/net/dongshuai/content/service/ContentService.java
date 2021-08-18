@@ -11,14 +11,14 @@ import entity.PageResult;
 public interface ContentService {
 
 	/**
-	 * 返回全部列表
+	 * 返回全部列表1
 	 * @return
 	 */
 	public List<TbContent> findAll();
 	
 	
 	/**
-	 * 返回分页列表
+	 * 返回分页列表2
 	 * @return
 	 */
 	public PageResult findPage(int pageNum,int pageSize);

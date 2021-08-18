@@ -158,6 +158,7 @@ public class CartServiceImpl implements CartService {
      */
     @Override
     public void saveCartListToRedis(String username, List<Cart> cartList) {
+		System.out.println(username);
         redisTemplate.boundHashOps("cartList").put(username, cartList);
     }
 
@@ -167,6 +168,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public List<Cart> mergeCartList(List<Cart> cartList1, List<Cart> cartList2) {
         for (Cart cart : cartList2) {
+			System.out.println(cart);
             for (TbOrderItem orderItem : cart.getOrderItemList()) {
                 addGoodsToCartList(cartList1, orderItem.getItemId(), orderItem.getNum());
             }

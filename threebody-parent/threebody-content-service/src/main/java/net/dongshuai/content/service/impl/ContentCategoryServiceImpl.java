@@ -26,7 +26,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 	private TbContentCategoryMapper contentCategoryMapper;
 	
 	/**
-	 * 查询全部
+	 * 查询全部1
 	 */
 	@Override
 	public List<TbContentCategory> findAll() {
@@ -34,7 +34,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 	}
 
 	/**
-	 * 按分页查询
+	 * 按分页查询2
 	 */
 	@Override
 	public PageResult findPage(int pageNum, int pageSize) {
@@ -44,7 +44,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
 	}
 
 	/**
-	 * 增加
+	 * 增加3
 	 */
 	@Override
 	public void add(TbContentCategory contentCategory) {

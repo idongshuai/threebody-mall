@@ -18,6 +18,7 @@ import entity.PageResult;
 
 /**
  * 服务实现层
+	ContentService
  * @author Administrator
  *
  */
