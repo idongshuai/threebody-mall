@@ -61,6 +61,15 @@ public class GoodsDescServiceImpl implements GoodsDescService {
 		goodsDescMapper.updateByPrimaryKey(goodsDesc);
 	}	
 	
+	
+	/**
+	 * 修改
+	 */
+	@Override
+	public void update(TbGoodsDesc goodsDesc){
+		goodsDescMapper.updateByPrimaryKey(goodsDesc);
+	}	
+	
 	/**
 	 * 根据ID获取实体
 	 * @param id

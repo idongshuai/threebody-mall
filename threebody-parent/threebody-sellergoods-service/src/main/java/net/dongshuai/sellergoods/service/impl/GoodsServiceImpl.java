@@ -58,6 +58,13 @@ public class GoodsServiceImpl implements GoodsService {
 	@Autowired
 	private TbSellerMapper sellerMapper;
 	
+	
+	@Autowired
+	private TbBrandMapper brandMapper;
+	
+	@Autowired
+	private TbSellerMapper sellerMapper;
+	
 	/**
 	 * 查询全部
 	 */

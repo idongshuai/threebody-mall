@@ -92,6 +92,14 @@ public class ItemCatServiceImpl implements ItemCatService {
 			}
 		    
 		}		
+			/**
+	 * 增加
+	 */
+	@Override
+	public void add(TbItemCat itemCat) {
+		itemCatMapper.insert(itemCat);		
+	}
+
 	}
 	
 	

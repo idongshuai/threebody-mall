@@ -47,7 +47,7 @@ public class SpecificationOptionServiceImpl implements SpecificationOptionServic
 	}
 
 	/**
-	 * 增加
+	 * 增加分页查询
 	 */
 	@Override
 	public void add(TbSpecificationOption specificationOption) {
@@ -56,7 +56,7 @@ public class SpecificationOptionServiceImpl implements SpecificationOptionServic
 
 	
 	/**
-	 * 修改
+	 * 修改分页查询
 	 */
 	@Override
 	public void update(TbSpecificationOption specificationOption){
