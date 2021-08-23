@@ -13,7 +13,7 @@ import entity.Result;
 import net.dongshuai.pojo.TbTypeTemplate;
 import net.dongshuai.sellergoods.service.TypeTemplateService;
 /**
- * controller
+ * controllerasd
  * @author Administrator
  *
  */
@@ -45,7 +45,7 @@ public class TypeTemplateController {
 	
 	/**
 	 * 增加
-	 * @param typeTemplate
+	 * @param typeTemplatasdfe
 	 * @return
 	 */
 	@RequestMapping("/add")
@@ -67,6 +67,7 @@ public class TypeTemplateController {
 	@RequestMapping("/update")
 	public Result update(@RequestBody TbTypeTemplate typeTemplate){
 		try {
+			typeTemplateService.update(typeTemplate);
 			typeTemplateService.update(typeTemplate);
 			return new Result(true, "修改成功");
 		} catch (Exception e) {

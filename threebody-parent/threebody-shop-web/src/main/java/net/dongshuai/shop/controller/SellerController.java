@@ -12,8 +12,8 @@ import net.dongshuai.sellergoods.service.SellerService;
 import entity.PageResult;
 import entity.Result;
 /**
- * controller
- * @author Administrator
+ * controllerasd
+ * @author Administratorasd
  *
  */
 @RestController

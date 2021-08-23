@@ -26,7 +26,7 @@ public class GoodsController {
 	private GoodsService goodsService;
 	
 	/**
-	 * 返回全部列表
+	 * 返回全部列表1
 	 * @return
 	 */
 	@RequestMapping("/findAll")
@@ -36,7 +36,7 @@ public class GoodsController {
 	
 	
 	/**
-	 * 返回全部列表
+	 * 返回全部列表2
 	 * @return
 	 */
 	@RequestMapping("/findPage")
@@ -45,7 +45,7 @@ public class GoodsController {
 	}
 	
 	/**
-	 * 增加
+	 * 增加3
 	 * @param goods
 	 * @return
 	 */

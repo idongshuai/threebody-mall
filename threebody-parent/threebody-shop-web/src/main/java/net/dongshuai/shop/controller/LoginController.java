@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
     
     /**
-     * 显示用户名
+     * 显示用户名1
      */
     @RequestMapping("/name")
     public Map name() {
