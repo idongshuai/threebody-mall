@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ProcessOnTencent" default="Build" basedir="/var/jenkins_home/workspace/processon_web_deploy_test/processon_web_local_to_test/ProcessOnWeb">
+	<property name="source.root" value="${basedir}/src"/>
+	<property name="class.root" value="${basedir}/WebRoot/WEB-INF/classes"/>
+	<property name="lib.dir" value="${basedir}/WebRoot/WEB-INF/lib"/>
+	<property name="target.dir" value="${basedir}/target"/>
+
+	<!-- class path for compilation and execution -->
+	<path id="basepath">
+		<!-- 运行时 class文件的位置 -->
+		<pathelement location="${class.root}" />
+		<!-- jar包 -->
+		<fileset dir="${lib.dir}">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="/opt/tomcat7_lib">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="/opt/external-jar">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+
+	<!-- 整合文件 -->
+	<target name="prepare">
+		<delete dir="${class.root}"/>
+		<delete dir="${target.dir}"/>
+		<mkdir dir="${class.root}"/>
+		<mkdir dir="${target.dir}"/>
+		<copy todir="${source.root}">
+            <fileset dir="${basedir}/diagram">
+                <include name="**/*.java" />
+            </fileset>
+        </copy>
+		<copy todir="${source.root}">
+            <fileset dir="${basedir}/graphics">  
+                <include name="**/*.java" />  
+            </fileset>  
+        </copy>
+		<copy todir="${source.root}">
+            <fileset dir="${basedir}/posreader">  
+                <include name="**/*.java" />  
+            </fileset>  
+        </copy>
+	</target>
+
+	<!-- 编译 -->
+	<target name="compile" depends="prepare">
+		<javac encoding="UTF-8"
+			target="1.8"
+			source="1.8"
+			fork="true"
+			includeantruntime="on"
+			deprecation= "false" 
+			optimize= "true" 
+			verbose="no" 
+			failonerror="on"
+			srcdir="${source.root}"
+            destdir="${class.root}"
+            debug="on">
+			<classpath refid="basepath"/>
+		</javac>
+	</target>
+
+	<!-- 打压缩包 -->
+	<target name="code-zip">
+		<zip destfile="${target.dir}/classes_${datetime}.zip">
+			<zipfileset dir="${class.root}"/>
+		</zip>
+	</target>
+
+	<target name="Build" depends="prepare,compile,code-zip">
+		<echo message="Ant is building the project." />
+	</target>
+</project>
