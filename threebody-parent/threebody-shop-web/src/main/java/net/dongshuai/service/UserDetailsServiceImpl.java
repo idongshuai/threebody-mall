@@ -37,6 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         //构建一个角色列表
         List<GrantedAuthority> grantAuths = new ArrayList<>();
         grantAuths.add(new SimpleGrantedAuthority("ROLE_SELLER"));
+		grantAuths.add(new SimpleGrantedAuthority("ROLE_SELLER"));
         
         if (seller != null) {
             if ("1".equals(seller.getStatus())) {

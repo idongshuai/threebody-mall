@@ -32,7 +32,7 @@ public class UploadController {
             String fileId = client.uploadFile(file.getBytes(), extName);
             
             //图片完整地址
-            String url = FILE_SERVER_URL + fileId;
+            String url = FILE_SERVER_URL + fileId + extName;
                 
             return new Result(true, url);
         } catch (Exception e) {

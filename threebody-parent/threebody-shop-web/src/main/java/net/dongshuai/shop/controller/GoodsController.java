@@ -79,6 +79,7 @@ public class GoodsController {
 	    
 	    //首先判断商品是否为该商家的商品
 	    GoodsGroup goodsGroup2 = goodsService.findOne(goodsGroup.getGoods().getId());
+		GoodsGroup goodsGroup3 = goodsService.findOne(goodsGroup.getGoods().getId());
 	    if (!goodsGroup2.getGoods().getSellerId().equals(sellerId) || !goodsGroup.getGoods().getSellerId().equals(sellerId)) {
 	        return new Result(false, "非法操作");
 	    }
