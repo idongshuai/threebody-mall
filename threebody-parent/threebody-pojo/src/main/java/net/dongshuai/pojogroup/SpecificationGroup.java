@@ -11,7 +11,7 @@ import net.dongshuai.pojo.TbSpecificationOption;
  * @author 董帅
  */
 public class SpecificationGroup implements Serializable {
-
+private static final long serialVersionUID = 1L;
     private TbSpecification specification;
     private List<TbSpecificationOption> specificationOptionList;
     public TbSpecification getSpecification() {

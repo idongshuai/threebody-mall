@@ -3,6 +3,7 @@ package net.dongshuai.pojo;
 import java.io.Serializable;
 
 public class TbGoodsDesc implements Serializable {
+	private static final long serialVersionUID = 1L;
     private Long goodsId;
 
     private String introduction;

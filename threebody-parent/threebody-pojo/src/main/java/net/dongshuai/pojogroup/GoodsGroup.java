@@ -12,7 +12,7 @@ import net.dongshuai.pojo.TbItem;
  * @author 董帅
  */
 public class GoodsGroup implements Serializable{
-    
+    private static final long serialVersionUID = 1L;
     //商品SPU基本信息
     private TbGoods goods;
     //商品SPU扩展信息

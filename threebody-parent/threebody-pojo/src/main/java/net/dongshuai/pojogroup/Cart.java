@@ -10,7 +10,7 @@ import net.dongshuai.pojo.TbOrderItem;
  * @author 董帅
  */
 public class Cart implements Serializable {
-    
+    private static final long serialVersionUID = 1L;
     private String sellerId;
     private String sellerName;
     //购物车明细列表

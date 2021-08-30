@@ -3,6 +3,7 @@ package net.dongshuai.pojo;
 import java.io.Serializable;
 
 public class TbTypeTemplate implements Serializable {
+	private static final long serialVersionUID = 1L;
     private Long id;
 
     private String name;
