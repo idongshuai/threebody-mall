@@ -1,0 +1,1 @@
+var browser={isMobile:function(i){for(var n=navigator.userAgent,o=new Array("Android","iPhone","SymbianOS","Windows Phone","iPad","iPod"),r=!1,e=0;e<o.length;e++)if(0<n.indexOf(o[e])){r=!0;break}"function"==typeof i&&i(r)},init:function(){}};browser.init();

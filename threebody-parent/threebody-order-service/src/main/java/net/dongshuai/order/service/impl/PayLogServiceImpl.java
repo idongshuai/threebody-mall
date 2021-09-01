@@ -53,6 +53,15 @@ public class PayLogServiceImpl implements PayLogService {
 		payLogMapper.insert(payLog);		
 	}
 
+
+	/**
+	 * 增加
+	 */
+	@Override
+	public void add2(TbPayLog payLog) {
+		payLogMapper.insert(payLog);		
+	}
+
 	
 	/**
 	 * 修改
