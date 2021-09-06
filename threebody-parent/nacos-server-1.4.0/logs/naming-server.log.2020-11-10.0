@@ -1,0 +1,58 @@
+2020-11-10 14:40:14,500 INFO GlobalConfig{taskDispatchPeriod=2000, batchSyncKeyCount=1000, syncRetryDelay=5000, dataWarmup=false, expireInstance=true, loadDataRetryDelayMillis=30000}
+
+2020-11-10 14:40:15,051 INFO open empty service auto clean job, initialDelay : 50000 ms, period : 30000 ms
+
+2020-11-10 14:40:15,052 INFO listen for service meta change
+
+2020-11-10 14:44:07,416 INFO creating empty service public:DEFAULT_GROUP@@microservice-discovery-provider-chart
+
+2020-11-10 14:44:07,441 INFO [NEW-SERVICE] {"name":"DEFAULT_GROUP@@microservice-discovery-provider-chart","protectThreshold":0.0,"groupName":"DEFAULT_GROUP","metadata":{},"finalizeCount":0,"owners":[],"resetWeight":false,"enabled":true,"selector":{"type":"none"},"namespaceId":"public","ipDeleteTimeout":30000,"lastModifiedMillis":1604990647420,"checksum":"ca4c84af8e122075586545161b97b954","clusterMap":{},"empty":true}
+
+2020-11-10 14:44:07,446 WARN cluster: DEFAULT not found, ip: {"instanceId":"192.168.199.115#8082#DEFAULT#DEFAULT_GROUP@@microservice-discovery-provider-chart","ip":"192.168.199.115","port":8082,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1604990647406,"marked":false,"app":"microservice-discovery-provider-chart","ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}, will create new cluster with default configuration.
+
+2020-11-10 14:44:07,458 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[{"instanceId":"192.168.199.115#8082#DEFAULT#DEFAULT_GROUP@@microservice-discovery-provider-chart","ip":"192.168.199.115","port":8082,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1604990647406,"marked":false,"app":"microservice-discovery-provider-chart","ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]}
+
+2020-11-10 14:45:54,218 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[]}
+
+2020-11-10 14:48:05,053 WARN namespace : public, [DEFAULT_GROUP@@microservice-discovery-provider-chart] services are automatically cleaned
+
+2020-11-10 14:48:05,058 INFO [DEAD-SERVICE] {"name":"DEFAULT_GROUP@@microservice-discovery-provider-chart","protectThreshold":0.0,"groupName":"DEFAULT_GROUP","metadata":{},"finalizeCount":5,"owners":[],"resetWeight":false,"enabled":true,"selector":{"type":"none"},"namespaceId":"public","ipDeleteTimeout":30000,"lastModifiedMillis":1604990754218,"checksum":"c6cca09dc10e798f3679e6f745c2a7ac","clusterMap":{"DEFAULT":{"serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","name":"DEFAULT","healthChecker":{"type":"TCP"},"defaultPort":80,"defaultCheckPort":80,"useIPPort4Check":true,"metadata":{},"sitegroup":"","defCkport":80,"empty":true,"defIPPort":80}},"empty":true}
+
+2020-11-10 14:57:24,532 INFO creating empty service public:DEFAULT_GROUP@@microservice-discovery-provider-chart
+
+2020-11-10 14:57:24,536 INFO [NEW-SERVICE] {"name":"DEFAULT_GROUP@@microservice-discovery-provider-chart","protectThreshold":0.0,"groupName":"DEFAULT_GROUP","metadata":{},"finalizeCount":0,"owners":[],"resetWeight":false,"enabled":true,"selector":{"type":"none"},"namespaceId":"public","ipDeleteTimeout":30000,"lastModifiedMillis":1604991444533,"checksum":"ca4c84af8e122075586545161b97b954","clusterMap":{},"empty":true}
+
+2020-11-10 14:57:24,537 WARN cluster: DEFAULT not found, ip: {"instanceId":"192.168.199.115#8082#DEFAULT#DEFAULT_GROUP@@microservice-discovery-provider-chart","ip":"192.168.199.115","port":8082,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1604991444525,"marked":false,"app":"microservice-discovery-provider-chart","ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}, will create new cluster with default configuration.
+
+2020-11-10 14:57:24,538 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[{"instanceId":"192.168.199.115#8082#DEFAULT#DEFAULT_GROUP@@microservice-discovery-provider-chart","ip":"192.168.199.115","port":8082,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1604991444525,"marked":false,"app":"microservice-discovery-provider-chart","ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]}
+
+2020-11-10 15:11:47,300 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[]}
+
+2020-11-10 15:12:17,709 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[{"instanceId":"192.168.199.115#8082#DEFAULT#DEFAULT_GROUP@@microservice-discovery-provider-chart","ip":"192.168.199.115","port":8082,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1604992337708,"marked":false,"app":"microservice-discovery-provider-chart","ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]}
+
+2020-11-10 15:17:41,397 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[]}
+
+2020-11-10 15:18:20,039 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[{"instanceId":"192.168.199.115#8082#DEFAULT#DEFAULT_GROUP@@microservice-discovery-provider-chart","ip":"192.168.199.115","port":8082,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1604992700039,"marked":false,"app":"microservice-discovery-provider-chart","ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]}
+
+2020-11-10 15:20:57,930 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[]}
+
+2020-11-10 15:21:28,222 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[{"instanceId":"192.168.199.115#8082#DEFAULT#DEFAULT_GROUP@@microservice-discovery-provider-chart","ip":"192.168.199.115","port":8082,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1604992888222,"marked":false,"app":"microservice-discovery-provider-chart","ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]}
+
+2020-11-10 15:22:46,079 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[]}
+
+2020-11-10 15:23:23,099 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[{"instanceId":"192.168.199.115#8082#DEFAULT#DEFAULT_GROUP@@microservice-discovery-provider-chart","ip":"192.168.199.115","port":8082,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1604993003099,"marked":false,"app":"microservice-discovery-provider-chart","ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]}
+
+2020-11-10 15:29:28,898 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[]}
+
+2020-11-10 15:30:01,351 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[{"instanceId":"192.168.199.115#8082#DEFAULT#DEFAULT_GROUP@@microservice-discovery-provider-chart","ip":"192.168.199.115","port":8082,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1604993401346,"marked":false,"app":"microservice-discovery-provider-chart","ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]}
+
+2020-11-10 15:40:25,002 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[]}
+
+2020-11-10 15:41:07,252 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[{"instanceId":"192.168.199.115#8082#DEFAULT#DEFAULT_GROUP@@microservice-discovery-provider-chart","ip":"192.168.199.115","port":8082,"weight":1.0,"healthy":true,"enabled":true,"ephemeral":true,"clusterName":"DEFAULT","serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","metadata":{"preserved.register.source":"SPRING_CLOUD"},"lastBeat":1604994067251,"marked":false,"app":"microservice-discovery-provider-chart","ipDeleteTimeout":30000,"instanceHeartBeatTimeOut":15000,"instanceHeartBeatInterval":5000}]}
+
+2020-11-10 15:41:09,091 INFO [NACOS-RAFT] datum is changed, key: com.alibaba.nacos.naming.iplist.ephemeral.public##DEFAULT_GROUP@@microservice-discovery-provider-chart, value: {"instanceList":[]}
+
+2020-11-10 15:42:36,304 WARN namespace : public, [DEFAULT_GROUP@@microservice-discovery-provider-chart] services are automatically cleaned
+
+2020-11-10 15:42:36,329 INFO [DEAD-SERVICE] {"name":"DEFAULT_GROUP@@microservice-discovery-provider-chart","protectThreshold":0.0,"groupName":"DEFAULT_GROUP","metadata":{},"finalizeCount":5,"owners":[],"resetWeight":false,"enabled":true,"selector":{"type":"none"},"namespaceId":"public","ipDeleteTimeout":30000,"lastModifiedMillis":1604994069101,"checksum":"c6cca09dc10e798f3679e6f745c2a7ac","clusterMap":{"DEFAULT":{"serviceName":"DEFAULT_GROUP@@microservice-discovery-provider-chart","name":"DEFAULT","healthChecker":{"type":"TCP"},"defaultPort":80,"defaultCheckPort":80,"useIPPort4Check":true,"metadata":{},"sitegroup":"","defCkport":80,"empty":true,"defIPPort":80}},"empty":true}
+

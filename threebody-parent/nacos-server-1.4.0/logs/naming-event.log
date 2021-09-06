@@ -1,0 +1,64 @@
+2020-11-10 14:44:07,459 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 14:44:07,462 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 192.168.199.115:8082_true,
+
+2020-11-10 14:45:54,218 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 14:45:54,218 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 
+
+2020-11-10 14:57:24,540 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 14:57:24,541 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 192.168.199.115:8082_true,
+
+2020-11-10 15:11:47,301 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:11:47,301 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 
+
+2020-11-10 15:12:17,709 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:12:17,709 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 192.168.199.115:8082_true,
+
+2020-11-10 15:17:41,397 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:17:41,398 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 
+
+2020-11-10 15:18:20,043 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:18:20,043 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 192.168.199.115:8082_true,
+
+2020-11-10 15:20:57,930 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:20:57,930 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 
+
+2020-11-10 15:21:28,223 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:21:28,223 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 192.168.199.115:8082_true,
+
+2020-11-10 15:22:46,080 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:22:46,080 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 
+
+2020-11-10 15:23:23,099 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:23:23,099 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 192.168.199.115:8082_true,
+
+2020-11-10 15:29:28,898 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:29:28,898 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 
+
+2020-11-10 15:30:01,351 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:30:01,351 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 192.168.199.115:8082_true,
+
+2020-11-10 15:40:25,003 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:40:25,003 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 
+
+2020-11-10 15:41:07,252 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-NEW} cluster: DEFAULT, new ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:41:07,252 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 192.168.199.115:8082_true,
+
+2020-11-10 15:41:09,101 INFO DEFAULT_GROUP@@microservice-discovery-provider-chart {SYNC} {IP-DEAD} cluster: DEFAULT, dead ips size: 1, content: [192.168.199.115:8082:unknown:DEFAULT_1.0_true_false_DEFAULT]
+
+2020-11-10 15:41:09,102 INFO [IP-UPDATED] namespace: public, service: DEFAULT_GROUP@@microservice-discovery-provider-chart, ips: 
+
