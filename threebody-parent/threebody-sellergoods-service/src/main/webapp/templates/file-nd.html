@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript">
+var chartId = "${chartId}";
+var definition = ${definition};
+var themeDef = ${themeDef};
+//部分导出节点ID
+var  partId = "${partId}";
+if(themeDef == "null"){
+	themeDef = null;
+}
+if(definition == null){
+	definition = "";
+}
+var newStr = JSON.stringify(definition);
+var imgProps = {x: 0, y: 0, width: 200, height: 200, background: "255,255,255"};
+var sourceClient = "${source}", exportType = "${type}";
+
+
+</script>
+<link type='text/css' rel='stylesheet' href='../../../themes/default/mind/mind.css'/>
+<link type='text/css' rel='stylesheet' href='../../../assets/katex/katex.min.css'/>
+<!-- <link type='text/css' rel='stylesheet' href='../../../themes/default/mind/icons/icons.css'/> -->
+<link rel="stylesheet" type="text/css" href="https://at.alicdn.com/t/font_611424_44ei7irm61j.css" />
+
+<script type="text/javascript" src="../../../scripts/jquery.js"></script>
+<script type="text/javascript" src="../../../scripts/mind/mind.core.js"></script>
+<script type="text/javascript" src="../../../assets/katex/katex.min.js"></script>
+<style>
+*{transition: none!important;}
+.expand_box{opacity:.0 !important;}
+.topic-container{z-index:1}
+</style>
+<script type="text/javascript">
+$(function(){
+	var mind = new mindDesigner("#mind_con", {chartId:chartId,readonly:true}, definition, themeDef);
+	mind.util.clearSelect();
+    //部分导出节点筛选
+    var partIdArr;
+    if(partId && partId != "null"){
+        partIdSearch();
+        //隐藏root连接线
+        $(".svg-topic-con").hide();
+    }
+	//打开后计算尺寸
+	var minX = null;
+	var minY = null;
+	var maxX = null;
+	var maxY = null;
+	var minX_ = 0;
+	var minY_ = 0;
+	$(".topic-container,.connection-svg").each(function(){
+        //部分导出计算画布大小
+        if(partIdArr){
+            if($(this).hasClass("topic-container")){
+                var thisId = $(this).children('.topic-box').attr("id");
+                if(partIdArr.indexOf(thisId) == -1){
+                    //$(this).hide();
+                    return true;
+                }
+            }
+            if($(this).attr("class") == "connection-svg"){
+                var thisId = $(this).attr("id");
+                if(!connectInPart(thisId)){
+                    //$(this).hide();
+                    return true;
+                }
+            }
+        }
+        var ele = $(this), pos = ele.offset(),
+            right = pos.left + (ele.outerWidth() == 0 ? ele[0].getBBox().width : ele.outerWidth()),
+            bottom = pos.top + (ele.outerHeight() == 0 ? ele[0].getBBox().height : ele.outerHeight());
+		/*if(ele.css("position") != "absolute"){
+			return true;
+		}*/
+		if(minX == null || pos.left < minX){
+			minX = pos.left;
+            minX_ = minX - $(".mind-designer").offset().left;
+		}
+		if(minY == null || pos.top < minY){
+			minY = pos.top;
+			minY_ = minY - $(".mind-designer").offset().top;
+		}
+		if(maxX == null || right > maxX){
+			maxX = right;
+		}
+		if(maxY == null || bottom > maxY){
+			maxY = bottom;
+		}
+	});
+	var canvas = $("#mind_con");
+	if(minX == null){
+		minX = 0;
+		minY = 0;
+		maxX = 0;
+		maxY = 0;
+	}
+	//四边扩展50像素
+	minX = minX - 30;
+	minY = minY - 30;
+	minX_ = minX_ - 30;
+	minY_ = minY_ - 30;
+	var imgW = maxX + 30 - minX;
+	var imgH = maxY + 30 - minY;
+	canvas.css({
+		width:imgW,
+		height:imgH
+	});
+	canvas.scrollLeft(minX_);
+	canvas.scrollTop(minY_);
+	imgProps.x = parseInt(minX);
+	imgProps.y = parseInt(minY);
+	imgProps.width = parseInt(imgW * 1.5);
+	imgProps.height = parseInt(imgH*1.5);
+	if(mind.styles != null){
+		var bg = mind.styles.background;
+		if(bg.indexOf("#") >= 0 && bg.indexOf("null") < 0){
+			bg = colorRgb(bg);
+			imgProps.background = getColorVal(bg);
+		}else if(bg != null && bg.indexOf("null") < 0 && bg.toLowerCase().indexOf("rgb(") >= 0){
+			imgProps.background = getColorVal(bg);
+		}
+		//$('body').append($('<div style="z-index: 999;position: absolute;left: 100px;top:100px;">bgrgb='+ imgProps.background +'</div>'))
+	}
+	function getColorVal(val){
+		val = val.replace("rgb(", "");
+		val = val.replace(")", "");
+		return val;
+	}
+	/*16进制颜色转为RGB格式*/
+	function colorRgb(sColor){
+		var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+		if(sColor && reg.test(sColor)){
+			if(sColor.length === 4){
+				var sColorNew = "#";
+				for(var i=1; i<4; i+=1){
+					sColorNew += sColor.slice(i,i+1).concat(sColor.slice(i,i+1));	
+				}
+				sColor = sColorNew;
+			}
+			//处理六位的颜色值
+			var sColorChange = [];
+			for(var i=1; i<7; i+=2){
+				sColorChange.push(parseInt("0x"+sColor.slice(i,i+2)));	
+			}
+			return "rgb(" + sColorChange.join(",") + ")";
+		}else{
+			return sColor;	
+		}
+	};
+	<#if wpsVip?? && !wpsVip>
+		var diffX = (maxX -  minX) , diffY = (maxY - minY) ;
+		var width = minX_ + diffX , height = minY_ + diffY ;
+		var font_size;
+		/* if(diffX < 500 || diffY < 500){
+			var w = Math.min(diffX,diffY);
+			var fontx = Math.ceil(w / 35.7);
+			font_size = fontx < 12 ? 12 : fontx;
+			padding = 5;
+		} */
+		
+		var w = Math.min(imgW,imgH), letterSpacing = '1px',textIndent = '2px';
+		
+		if(imgW < 700){
+			font_size = 26;
+		}else if(imgW < 1200){
+			font_size = 48;
+			letterSpacing = '3px';
+			textIndent = '5px';
+		}else{
+			font_size = 72;
+			letterSpacing = '4px';
+			textIndent = '8px';
+		}
+		/*RGB格式转为HSL色值*/
+		function rgbToHsl(rgbArray) {
+			
+			var r = rgbArray[0], g = rgbArray[1], b = rgbArray[2];
+		    r /= 255, g /= 255, b /= 255;
+		    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+		    var h, s, l = (max + min) / 2;
+
+		    if (max == min){ 
+		        h = s = 0; // achromatic
+		    } else {
+		        var d = max - min;
+		        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+		        switch(max) {
+		            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+		            case g: h = (b - r) / d + 2; break;
+		            case b: h = (r - g) / d + 4; break;
+		        }
+		        h /= 6;
+		    }
+		    //$('body').append($('<div style="z-index: 999;position: absolute;left: 100px;top:200px;">bghsl='+ [h, s, l].join(',') +'</div>'));
+		    return [h, s, l];
+		}
+		//确定水印颜色
+		function getBrandColor(h,l){
+			l = l * 100;
+			var brandColorArr = ['#000', '#fff'], brandColor = '#000';
+			if(h < 200 || h > 270){
+				if(l <= 30){
+					brandColor = brandColorArr[1];
+				}else{
+					brandColor = brandColorArr[0];
+				}
+			}else{
+				if(l <= 50){
+					brandColor = brandColorArr[1];
+				}else{
+					brandColor = brandColorArr[0];
+				}
+			}
+			// $('body').append($('<div style="z-index: 999;position: absolute;left: 100px;top:400px;">brandColor='+ brandColor +'</div>'));
+			return brandColor;
+		}
+		var imgBgArray  = imgProps.background.split(','),
+		imgBgHsl = rgbToHsl(imgBgArray)
+		var brandColor = getBrandColor(imgBgHsl[0],imgBgHsl[2]);
+		/* $('.mind-designer').append('<div style="position: absolute;right:'+ (20000 - minX_ - imgW + padding) +'px;bottom: '+ (20000 - minY_ - imgH + padding - 4) +'px;background-color: rgba(0,0,0,0.5);font-size: '+ font_size +'px;padding: 7px 15px;line-height: 100%;border-radius: 2px;"><span style="'+
+			    'color: #fff;">Powered by WPS MindMap</span></div>'); */
+		var styleText = 'opacity: 0.06;display: block;font-weight: bold;font-size:'+ font_size +'px;color:'+ brandColor +';font-family: Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei;';
+		var text = '<span style="'+ styleText +'">WPS Mind<span style="line-height: 110%;display:block;letter-spacing:'+ letterSpacing +';font-size:'+ font_size/2 +'px;font-weight: normal;text-indent:'+ textIndent +';">WPS仅提供作图能力</span></span>'
+		$('.mind-designer').append('<div style="z-index: 2;position: fixed;-webkit-transform: translate(-50%, -50%) rotate(-30deg);transform: translate(-50%, -50%) rotate(-30deg);left: '+ imgW/2 +'px;top: '+ imgH/2 +'px;">' + text + '</div>');
+	</#if>
+	/* if(sourceClient == "mobi"&& (exportType == "image" || exportType == "png")){
+		$('.mind-designer').css('background', "transparent");
+		$('#mind_con').css('background', "transparent");
+	} */
+
+    //部分导出ID筛选
+    function partIdSearch() {
+        var idArr = [];
+        searchId([definition])
+        function searchId(data,partChild,summaries) {
+            data.map(function (item,idx) {
+                var thisPartChild = false;
+                if(item.id == partId || partChild){
+                    idArr.push(item.id);
+                    thisPartChild = true;
+                }
+                if(item.children && item.children.length > 0){
+                    var summariesRight;
+                    if(item.summaries && item.summaries.length){
+                        summariesRight = item.summaries.filter(function (items) {
+                            return items.part == undefined || items.part == 'right'
+                        })
+                    }
+                    searchId(item.children,thisPartChild,summariesRight)
+                }
+                if(item.leftChildren && item.leftChildren.length > 0){
+                    var summariesLeft;
+                    if(item.summaries && item.summaries.length){
+                        summariesLeft = item.summaries.filter(function (items) {
+                            return items.part == undefined || items.part == 'left'
+                        })
+                    }
+                    searchId(item.leftChildren,thisPartChild,summariesLeft)
+                }
+                if(item.summaries && item.summaries.length > 0){
+                    searchId(item.summaries,thisPartChild)
+                }
+                //自身概要
+                if(item.id == partId && summaries && summaries.length){
+                    summaries.map(function (items) {
+                        if(items.range == (idx+','+idx)){
+                            idArr.push(items.id);
+                            thisPartChild = true;
+                            if(items.children && items.children.length > 0){
+                                var summariesRight;
+                                if(items.summaries && items.summaries.length){
+                                    summariesRight = items.summaries.filter(function (itemss) {
+                                        return itemss.part == undefined || itemss.part == 'right'
+                                    })
+                                }
+                                searchId(items.children,thisPartChild,summariesRight)
+                            }
+                            if(items.leftChildren && items.leftChildren.length > 0){
+                                var summariesLeft;
+                                if(items.summaries && items.summaries.length){
+                                    summariesLeft = items.summaries.filter(function (itemss) {
+                                        return itemss.part == undefined || itemss.part == 'left'
+                                    })
+                                }
+                                searchId(items.leftChildren,thisPartChild,summariesLeft)
+                            }
+                            if(items.summaries && items.summaries.length > 0){
+                                searchId(items.summaries,thisPartChild)
+                            }
+                        }
+                    })
+
+                }
+            })
+        }
+        partIdArr = idArr;
+        console.log(idArr);
+    }
+    //关联线是否在该节点中
+    function connectInPart(connectId) {
+        var lines = definition.lines,
+            id = connectId.split("_")[1];
+        if(lines && lines[id]){
+            var fromId = lines[id].from,
+                toId = lines[id].to;
+            if(partIdArr.indexOf(fromId) !== -1 && partIdArr.indexOf(toId) !== -1){
+                return true;
+            }
+        }
+        return false;
+    }
+    //部分导出隐藏其他
+    if(partIdArr){
+        removePartOther()
+    }
+    function removePartOther() {
+        $(".topic-box").each(function () {
+            var id = $(this).attr("id");
+            if(partIdArr.indexOf(id) == -1){
+                $(this).css('visibility','hidden');
+            }
+        })
+        //关联线
+        $(".connection-svg").each(function () {
+            var id = $(this).attr("id");
+            if(!connectInPart(id)){
+                $(this).css('visibility','hidden');
+            }
+        })
+        //关联线文字
+        $(".mind-connection-con").each(function () {
+            var id = $(this).attr("conn");
+            if(!connectInPart('line_'+id)){
+                $(this).css('visibility','hidden');
+            }
+        })
+        //概要括号
+        $(".svg-freesums-con path,.svg-summary-con path").each(function () {
+            var id = $(this).attr("id").split("_")[1];
+            if(partIdArr.indexOf(id) == -1 || id == partId){
+                $(this).css('visibility','hidden');
+            }
+        })
+        //连接线
+        $("#mind_con svg").each(function () {
+            var childId = $(this).siblings(".topic-box").attr("id");
+            if(childId){
+                $('#subline_'+childId).find("path").each(function (item) {
+                    var id = $(this).attr("p");
+                    if(partIdArr.indexOf(id) == -1){
+                        $(this).css('visibility','hidden');
+                    }
+                })
+            }
+        })
+    }
+});
+</script>
+</head>
+<body style="zoom:1.5">
+<div class="mind-container" style="overflow:hidden;position:relative;" id="mind_con"></div>
+</body>
+</html>

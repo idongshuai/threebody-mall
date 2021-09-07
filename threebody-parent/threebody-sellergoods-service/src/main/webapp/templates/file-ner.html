@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript">
+var role = "viewer";
+var localRuntime = true;
+var tutorial = false;
+var showToolbar = false;
+var showCommentIco = false;
+</script>
+<link type='text/css' rel='stylesheet' href='../../../themes/default/diagraming/designer.css'/>
+<script type="text/javascript" src="../../../scripts/jquery.js"></script>
+<script type="text/javascript" src="../../../scripts/diagraming/schema/schema.js"></script>
+<script type="text/javascript" src="../../../scripts/diagraming/designer.core.js"></script>
+<script type="text/javascript" src="../../../scripts/diagraming/designer.methods.js"></script>
+<script type="text/javascript" src="../../../scripts/diagraming/designer.events.js"></script>
+<script type="text/javascript">
+var chartId = "${chartId}";
+var definition = ${definition};
+if(definition == null){
+	definition = "";
+}
+var imgProps = {x: 0, y: 0, width: 200, height: 200, background: "255,255,255"};
+$(document).ready(function(){
+	Designer.open(definition);
+	var page = Model.define.page;
+	//Model.define.page.backgroundColor != "transparent"Model.define.page.backgroundColor != "255,255,255"
+	if(page.backgroundColor && page.backgroundColor != "transparent"){
+		$("body").css("background-color", "rgb(" + page.backgroundColor + ")");
+	}
+	imgProps.background = page.backgroundColor;
+	//打开后计算尺寸
+	var minX = null;
+	var minY = null;
+	var maxX = null;
+	var maxY = null;
+	$(".shape_box").each(function(){
+		var ele = $(this);
+		var pos = ele.position();
+		var right = pos.left + ele.width();
+		var bottom = pos.top + ele.height();
+		if(minX == null || pos.left < minX){
+			minX = pos.left;
+		}
+		if(minY == null || pos.top < minY){
+			minY = pos.top;
+		}
+		if(maxX == null || right > maxX){
+			maxX = right;
+		}
+		if(maxY == null || bottom > maxY){
+			maxY = bottom;
+		}
+	});
+	if(minX == null){
+		minX = 0;
+		minY = 0;
+		maxX = 0;
+		maxY = 0;
+	}
+	//四边扩展50像素
+	minX = minX - 30;
+	minY = minY - 30;
+	var imgW = maxX + 30 - minX;
+	var imgH = maxY + 30 - minY;
+    var canvas = $("#designer_canvas");
+	canvas.css({
+		width: page.width,
+		height: page.height,
+		left: (-minX) + "px",
+		top: (-minY) + "px"
+	});
+    var exportBox = $("#exportBox");
+    exportBox.css({
+        width: imgW,
+        height: imgH,
+        overflow:"hidden"
+    })
+	imgProps.x = parseInt(minX);
+	imgProps.y = parseInt(minY);
+	imgProps.width = parseInt(imgW);
+	imgProps.height = parseInt(imgH);
+
+    //自定义水印
+    var setWatermark = page.watermark;
+    if(setWatermark){
+        setWatermark = $('<span/>').html(Model.define.page.watermark).text();
+        var grids = $("#designer_grids"),
+            ctx = grids[0].getContext("2d"),
+            padding = page.padding,
+            gridsW = page.width - padding * 2,
+            gridsH = page.height - padding * 2,
+            darkest = Utils.getDarkestColor(imgProps.background == "transparent" ? "255,255,255" : imgProps.background);
+        grids.attr({
+            width: page.width,
+            height: page.height
+        });
+        if(!$('#watermarkCanvas').length){
+            var watermarkCanvas = '<canvas id = "watermarkCanvas" width = "300px"  height = "300px" style="display:none;"></canvas>';
+            $("body").append(watermarkCanvas);
+        }
+        var watermarkCw = $('#watermarkCanvas')[0];
+        var watermarkCtx = watermarkCw.getContext("2d");
+        watermarkCtx.clearRect(0,0,300,300);
+        watermarkCtx.font="18px Arial";
+        watermarkCtx.rotate(-45 * Math.PI / 180);
+        watermarkCtx.fillStyle = "rgba("+darkest+",0.8)";
+        watermarkCtx.fillText(setWatermark, -190, 210);
+        watermarkCtx.rotate(45 * Math.PI / 180);
+        var pat=ctx.createPattern(watermarkCw,'repeat');
+        ctx.translate(padding, padding);
+        ctx.rect(0, 0, gridsW, gridsH);
+        ctx.fillStyle = pat;
+        ctx.fill();
+    }
+	
+	<#if wpsVip?? && !wpsVip>
+	
+		//$('body').append('<div style="z-index: 999;position: fixed;left:100px;top:100px;">bg='+ imgProps.background +'</div>');
+	
+		var diffX = (maxX -  minX) , diffY = (maxY - minY) ;
+		var width = minX + diffX , height = minY + diffY ;
+		
+		var font_size;
+		var w = Math.min(imgW,imgH), letterSpacing = '1px',textIndent = '2px';
+		
+		if(imgW < 700){
+			font_size = 26;
+		}else if(imgW < 1200){
+			font_size = 48;
+			letterSpacing = '3px';
+			textIndent = '5px';
+		}else{
+			font_size = 72;
+			letterSpacing = '4px';
+			textIndent = '8px';
+		}
+		/*RGB格式转为HSL色值*/
+		function rgbToHsl(rgbArray) {
+			
+			var r = rgbArray[0], g = rgbArray[1], b = rgbArray[2];
+		    r /= 255, g /= 255, b /= 255;
+		    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+		    var h, s, l = (max + min) / 2;
+
+		    if (max == min){ 
+		        h = s = 0; // achromatic
+		    } else {
+		        var d = max - min;
+		        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+		        switch(max) {
+		            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+		            case g: h = (b - r) / d + 2; break;
+		            case b: h = (r - g) / d + 4; break;
+		        }
+		        h /= 6;
+		    }
+		    h = h.toFixed(3); l = l.toFixed(3);
+		    return [h, s, l];
+		}
+		//确定水印颜色
+		function getBrandColor(h,l){
+			l = l * 100;
+			var brandColorArr = ['#000', '#fff'], brandColor = '#000';
+			if(h < 200 || h > 270){
+				if(l <= 30){
+					brandColor = brandColorArr[1];
+				}else{
+					brandColor = brandColorArr[0];
+				}
+			}else{
+				if(l <= 50){
+					brandColor = brandColorArr[1];
+				}else{
+					brandColor = brandColorArr[0];
+				}
+			}
+			return brandColor;
+		}
+		var imgBgArray  = imgProps.background.split(','),
+		imgBgHsl = rgbToHsl(imgBgArray)
+		var brandColor = getBrandColor(imgBgHsl[0],imgBgHsl[2]);
+		var styleText = 'opacity: 0.06;display: block;font-weight: bold;font-size:'+ font_size +'px;color:'+ brandColor +';font-family: Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei;';
+		var text = '<span style="'+ styleText +'">WPS Flow<span style="line-height: 110%;display:block;letter-spacing:'+ letterSpacing +';font-size:'+ font_size/2 +'px;font-weight: normal;text-indent:'+ textIndent +';">WPS仅提供作图能力</span></span>'
+		if (diffX > 200) {
+			$('body').append('<div style="z-index:999;position: fixed;-webkit-transform: translate(-50%, -50%) rotate(-30deg);transform: translate(-50%, -50%) rotate(-30deg);left: '+ imgW/2 +'px;top: '+ imgH/2 +'px;">' + text + '</div>');
+		}
+	</#if>
+	
+	
+})
+
+</script>
+</head>
+<body style="overflow: visible;">
+<div id="exportBox">
+    <div id="designer_canvas" style="background: transparent; box-shadow: none">
+        <canvas id="designer_grids"></canvas>
+    </div>
+    <div id="shape_img_container"></div>
+</div>
+</body>
+</html>
